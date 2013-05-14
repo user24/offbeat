@@ -1,0 +1,37 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="jquery.offbeat.js"></script>
+	<script>
+
+	$(document).ready(function isReady() {
+		
+		$('#foo').on('inputStart', function(evt, data) {
+			console.log('input has started', data);
+			data.foo = "foo";
+		}).on('inputting', function(evt, data) {
+			console.log('inputting', data);
+		}).on('inputStop', function(evt, data) {
+			console.log('input has stopped', data);
+		});
+
+		$('#foo').offBeat();
+
+		$('#bar').offBeat();
+
+		$('#bar').on('inputStart', function(evt, data) {
+			console.log('input has started', data);
+			data.foo = "bar";
+		}).on('inputting', function(evt, data) {
+			console.log('inputting', data);
+		}).on('inputStop', function(evt, data) {
+			console.log('input has stopped', data);
+		});
+	});
+	</script>
+</head>
+<body>
+<input id="foo"><br />
+<input id="bar">
+</body>
+</html>
